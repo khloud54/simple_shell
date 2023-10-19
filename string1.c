@@ -8,7 +8,7 @@
 */
 char *_strcpy(char *dest, char *src)
 {
-	int i = 0
+	int i = 0;
 
 		if (dest == src || src == 0)
 			return (dest);
@@ -70,7 +70,7 @@ void _puts(char *str)
 int _putchar(char c)
 {
 	static int i;
-	static char buf[WRITE_BUGF_SIZE];
+	static char buf[WRITE_BUF_SIZE];
 
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{

@@ -86,7 +86,7 @@ typedef struct passinfo
 	list_t *history;
 	list_t *alias;
 	char **environ;
-	list env_changed;
+	int env_changed;
 	int status;
 
 	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory management */
@@ -95,8 +95,8 @@ typedef struct passinfo
 	int histcount;
 } info_t;
 
-#define INFO_INIT /
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, 0, NULL, \
+#define INFO_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
 /**
@@ -189,7 +189,7 @@ void signHandler(int);
 
 /* toem_getinfo.c */
 void clear_info(info_t *);
-void set_info(info_y *, char **);
+void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
 /* toem_environ.c */

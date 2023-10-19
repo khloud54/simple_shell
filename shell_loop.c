@@ -37,7 +37,7 @@ int hsh(info_t *info, char **av)
 	{
 		if (info->err_num == -1)
 			exit(info->status);
-		ecit(info->err_num);
+		exit(info->err_num);
 	}
 	return (builtin_ret);
 }
@@ -53,7 +53,7 @@ int hsh(info_t *info, char **av)
 int find_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
-	builtin_table builtintbl[] = {
+	builtin_table builtin_table[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
@@ -65,11 +65,11 @@ int find_builtin(info_t *info)
 		{NULL, NULL}
 	};
 
-	for (i = 0; builtintbl[i].type; i++)
-		if(_strcmp(info->argv[0], builtintbl[i].type) == 0)
+	for (i = 0; builtin_table[i].type; i++)
+		if(_strcmp(info->argv[0], builtin_table[i].type) == 0)
 		{
 			info->line_count++;
-			built_in_ret = builtintbl[i].fun(info);
+			built_in_ret =  builtin_table[i].func(info);
 			break;
 		}
 	return (built_in_ret);
@@ -125,7 +125,7 @@ void fork_cmd(info_t *info)
 	pid_t child_pid;
 
 	child_pid = fork();
-	if (child_pid == -1);
+	if (child_pid == -1)
 	{
 		/* TODO: put ERROR FUNCTION */
 		perror("ERROR:");

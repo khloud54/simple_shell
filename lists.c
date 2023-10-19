@@ -120,7 +120,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
 		if (i == index)
 		{
 			prev_node->next = node->next;
-			fee(node->str);
+			free(node->str);
 			free(node);
 			return (1);
 		}

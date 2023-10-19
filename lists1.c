@@ -22,7 +22,7 @@ size_t list_len(const list_t *h)
  * @head: pointer to first node
  * Return: array of strings
 */
-char **list_to_strings(llist_t *head)
+char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
 	size_t i = list_len(head), j;
@@ -64,7 +64,7 @@ size_t print_list(const list_t *h)
 
 	while (h)
 	{
-		_puts(converts_number(h->num, 10, 0));
+		_puts(convert_number(h->num, 10, 0));
 		_putchar(';');
 		_putchar(' ');
 		_puts(h->str ? h->str : "(nil)");
