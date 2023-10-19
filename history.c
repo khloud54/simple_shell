@@ -43,7 +43,7 @@ int write_history(info_t *info)
 	for (node = info->history; node; node = node->next)
 	{
 		_putsfd(node->str, fd);
-		_putfd('\n' , fd);
+		_putfd('\n', fd);
 	}
 	_putfd(BUF_FLUSH, fd);
 	close(fd);
@@ -71,7 +71,7 @@ int read_history(info_t *info)
 		return (0);
 	if (!fstat(fd, &st))
 		fsize = st.st_size;
-       if (fsize < 2)
+	if (fsize < 2)
 		return (0);
 	buf = malloc(sizeof(char) * (fsize + 1));
 	if (!buf)
@@ -79,7 +79,7 @@ int read_history(info_t *info)
 	rdlen = read(fd, buf, fsize);
 	buf[fsize] = 0;
 	if (rdlen <= 0)
-		return(free(buf), 0);
+		return (free(buf), 0);
 	close(fd);
 	for (i = 0; i < fsize; i++)
 		if (buf[i] == '\n')
@@ -90,7 +90,8 @@ int read_history(info_t *info)
 		}
 	if (last != i)
 		build_history_list(info, buf + last, linecount++);
-	free (buf);
+	free(buf);
+
 	info->histcount = linecount;
 	while (info->histcount-- >= HIST_MAX)
 		delete_node_at_index(&(info->history), 0);

@@ -66,7 +66,7 @@ int find_builtin(info_t *info)
 	};
 
 	for (i = 0; builtin_table[i].type; i++)
-		if(_strcmp(info->argv[0], builtin_table[i].type) == 0)
+		if (_strcmp(info->argv[0], builtin_table[i].type) == 0)
 		{
 			info->line_count++;
 			built_in_ret =  builtin_table[i].func(info);
@@ -92,7 +92,7 @@ void find_cmd(info_t *info)
 		info->linecount_flag = 0;
 	}
 	for (i = 0, k = 0; info->arg[i]; i++)
-		if(!is_delim(info->arg[i], "\t\n"))
+		if (!is_delim(info->arg[i], "\t\n"))
 			k++;
 	if (!k)
 		return;
