@@ -139,7 +139,7 @@ char *_strcat(char *, char *);
 
 /* string_functions2.c */
 char *_strcpy(char *, char *);
-char *strdup(const char *);
+char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
 
